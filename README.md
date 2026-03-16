@@ -5,6 +5,10 @@ the image's true physical size. Works with Paint.NET, Photoshop, GIMP, or any
 image editor.
 
 ---
+## Release
+Version 1.0
+16 March 2026
+Pascal Gaudé and Claude.ai
 
 ## Why standalone instead of a Paint.NET plugin?
 
