@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>TiledPrint</AssemblyName>
+    <RootNamespace>TiledPrint</RootNamespace>
+    <ApplicationIcon>TiledPrint.ico</ApplicationIcon>
+    <Nullable>disable</Nullable>
+    <Optimize>true</Optimize>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>false</PublishSingleFile>
+    <!-- This app is intentionally Windows-only — suppress platform compatibility warnings -->
+    <NoWarn>CA1416</NoWarn>
+  </PropertyGroup>
+
+  <!-- Exclude the icon generator tool from this project's compilation -->
+  <ItemGroup>
+    <Compile Remove="tools\**\*.cs" />
+  </ItemGroup>
+
+</Project>
