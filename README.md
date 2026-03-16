@@ -26,7 +26,7 @@ dependencies** — only the free .NET SDK is needed to build it.
 - [.NET 9 SDK](https://dotnet.microsoft.com/download) (free)
 
 ### Build
-Open a command prompt in this folder and run:
+For PC with .Net, open a command prompt in this folder and run:
 ```
 dotnet build -c Release
 ```
@@ -38,6 +38,11 @@ bin\Release\net9.0-windows\TiledPrint.exe
 You can also publish a self-contained single file (runs on PCs without .NET):
 ```
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
+```
+
+To publish a self-contained single file with icon (runs on PCs without .NET):
+```
+build.bat
 ```
 
 ---
