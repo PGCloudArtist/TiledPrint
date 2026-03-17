@@ -69,10 +69,15 @@ namespace TiledPrint
             };
         }
 
+        // ── Version ───────────────────────────────────────────────────────────
+        private const string AppVersion = "v1.0.1";
+        private const string AppDate    = "17 March 2026";
+        private const string AppAuthors = "Pascal Gaudé & Claude.ai";
+
         // ── UI construction ───────────────────────────────────────────────────
         private void BuildUI()
         {
-            Text            = "Tiled Print — Real Size";
+            Text            = $"Tiled Print — Real Size  {AppVersion}";
             Size            = new Size(700, 680);
             MinimumSize     = new Size(680, 640);
             FormBorderStyle = FormBorderStyle.Sizable;
@@ -119,7 +124,17 @@ namespace TiledPrint
             };
             btnOpen.Click += BtnOpen_Click;
 
-            pnlLeft.Controls.AddRange(new Control[] { picThumb, lblImageInfo, btnOpen });
+            var lblVersion = new Label
+            {
+                Text      = $"{AppVersion}  ·  {AppDate}\n© {AppAuthors}",
+                Location  = new Point(10, 350),
+                Size      = new Size(200, 34),
+                ForeColor = Color.DarkGray,
+                Font      = new Font(Font.FontFamily, 7f),
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            pnlLeft.Controls.AddRange(new Control[] { picThumb, lblImageInfo, btnOpen, lblVersion });
 
             // ── Right panel: settings ──────────────────────────────────────────
             pnlSettings = new Panel { Dock = DockStyle.Fill, Padding = new Padding(14, 10, 14, 10) };

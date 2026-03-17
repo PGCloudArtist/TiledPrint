@@ -1,82 +1,33 @@
-# TiledPrint — Standalone Tiled Printing Tool
+# TiledPrint — Tiled Printing Tool
 
-Prints any image tiled across multiple pages so the assembled result matches
-the image's true physical size. Works with Paint.NET, Photoshop, GIMP, or any
-image editor.
-
----
-## Release
-Version 1.0
-16 March 2026
-Pascal Gaudé and Claude.ai
-
-## Why standalone instead of a Paint.NET plugin?
-
-Paint.NET 5.x completely redesigned its plugin API, and the legacy
-`Effect`/`EffectConfigDialog` system is deprecated and difficult to target
-without a paid Visual Studio license. This standalone app has **zero external
-dependencies** — only the free .NET SDK is needed to build it.
+**Version:** v1.0.1  
+**Date:** 17 March 2026  
+**Authors:** Pascal Gaudé & Claude.ai (Anthropic)  
+**License:** MIT  
 
 ---
 
-## Build instructions
+## What it does
 
-### Requirements
-- Windows 10 or 11 (64-bit)
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) (free)
+TiledPrint prints any image tiled across multiple pages so the assembled result
+matches the image's true physical size. It was built to fill a gap in Paint.NET,
+which has no built-in tiled / poster print feature.
 
-### Build
-Create a TiledPrint folder and copy all the files
-
-For PC with .Net, open a command prompt in this folder and run:
-```
-dotnet build -c Release
-```
-The executable is at:
-```
-bin\Release\net9.0-windows\TiledPrint.exe
-```
-
-You can also publish a self-contained single file (runs on PCs without .NET):
-```
-dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
-```
-
-To publish a self-contained single file with icon (runs on PCs without .NET), open a command prompt in this folder and run:
-```
-build.bat
-```
+Export your image from Paint.NET as a PNG (PNG preserves the DPI setting), open
+it in TiledPrint, and print. The assembled pages reproduce the canvas at exactly
+the size you designed it.
 
 ---
 
-## Usage
+## Features
 
-1. **Export** your image from Paint.NET (PNG recommended — preserves DPI metadata)
-2. **Run** `TiledPrint.exe`
-3. **Open** the image with the button or drag-and-drop it onto the window
-4. **Check the DPI** — the app reads it from the file automatically.
-   To verify or change the DPI in Paint.NET: `Image → Resize → Resolution`
-5. Choose your **paper size** and **orientation**
-6. Set the **overlap** (default 10 mm — helps align and tape pages)
-7. Click **Print Preview** to check the layout
-8. Click **Print…** to send to your printer
-
----
-
-## Assembling the pages
-
-Each printed page has a dashed line near the right and/or bottom edge
-marking the overlap zone:
-
-1. Print all pages
-2. **Right column trim**: trim pages along the right dashed line (except the last column)
-3. **Bottom row trim**: trim pages along the bottom dashed line (except the last row)
-4. Align trimmed edges and tape or glue pages together
-
-Each page also has a small label at the bottom:
-> Page 3/6  [col 3/3, row 1/2]
-
-This tells you exactly where each page belongs in the grid.
+- **Reads DPI automatically** from the image file
+- **Configurable** paper size, orientation, margins, and page overlap
+- **Alignment tick marks** in the margin strip to help you tape pages together accurately
+- **Page-by-page print preview** via the standard Windows print preview dialog
+- **Full tiled preview** — see the complete poster grid with all pages at once, with zoom
+- **Print range** — print all pages, a single page, or a custom range
+- **No installation required** — single `.exe`, no .NET runtime needed on the target PC
 
 ---
 
@@ -86,6 +37,73 @@ PNG, JPEG, BMP, TIFF, GIF
 
 ---
 
+## Usage
+
+1. Export your image from Paint.NET (`File → Save As → PNG`)
+2. Run `TiledPrint.exe`
+3. Open the image with the **Open Image** button or drag-and-drop it onto the window
+4. Check the **DPI** — read automatically from the file.  
+   To verify or change in Paint.NET: `Image → Resize → Resolution`
+5. Choose **paper size**, **orientation**, **margins**, and **overlap**
+6. Select a **print range** if needed (default: all pages)
+7. Click **Tiled Preview** to see the full poster layout
+8. Click **Page Preview** to check individual pages
+9. Click **Print…** to send to your printer
+
+---
+
+## Assembling the pages
+
+Each page has small tick marks in the margin strip at the trim edges:
+
+1. Print all pages (or your selected range)
+2. Trim pages along the right tick mark (all columns except the last)
+3. Trim pages along the bottom tick mark (all rows except the last)
+4. Align trimmed edges and tape or glue pages together
+
+Each page also has a small label at the bottom:
+> Page 3/6  [col 3/3, row 1/2] — TiledPrint
+
+---
+
+## Building from source
+
+### Requirements
+- Windows 10 or 11 (64-bit)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download) (free)
+
+### Quick build (development)
+```
+dotnet build -c Release
+```
+
+### Full build + publish (single-file exe for sharing)
+```
+build.bat
+```
+
+This generates:
+- `publish\TiledPrint.exe` — self-contained, runs on any Windows PC without .NET
+- `TiledPrint-release.zip` — ready to attach to a GitHub Release or forum post
+
+---
+
+## About
+
+TiledPrint was created by **Pascal Gaudé** in collaboration with
+**[Claude.ai](https://claude.ai)** (Anthropic's AI assistant), which co-authored
+the majority of the C# code through an iterative conversation-driven development
+process.
+
+The project was motivated by the frequency of requests on the Paint.NET forum
+from users wanting to print large canvases at true physical size — a feature
+not natively available in Paint.NET 5.x, and no longer covered by the deprecated
+PrintIt! plugin.
+
+---
+
 ## License
 
-MIT — free to use, modify, and redistribute.
+MIT License — see [LICENSE](LICENSE) for details.
+
+Copyright (c) 2026 Pascal Gaudé
